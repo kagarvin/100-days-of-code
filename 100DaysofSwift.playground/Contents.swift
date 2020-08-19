@@ -1,5 +1,5 @@
 import UIKit
-                            // ---------- DAY 1 ----------
+                            // ---------- DAY 1: Simple Types ----------
 
 // Variables
 var str = "Hello, playground"
@@ -45,7 +45,7 @@ let bool2: Bool = true
     6. Swift uses type inference to assign each variable or constant a type, but you can provide explicit types if you want. */
 
 
-                            // ---------- DAY 2 ----------
+                            // ---------- DAY 2: Complex Types ---------- (Work on distinguishing between the different types, what they're used for, and when to use)
 
 // Arrays - lists!
 let thing1 = "Thingy Number One"
@@ -95,4 +95,183 @@ defvalex["Second"]
 defvalex["First"]
 // defvalex["Fourth", defualt: "text"] - should return "text", but does not work. Skip for now.
 
-// Creating Empty Collections - 
+// Creating Empty Collections - Note: Collections are what Swift calls lists
+var collections = [String: String]() // empty array to store strings
+collections["Stacy's Mom"] = "Has it going on"
+var collections2 = [Int]() // empty array to store integers
+    // note that empty sets are created differently and that Swift has special syntax for both dictionaries and arrays
+var collections3 = Set<String>()
+var collections4 = Set<Int>()
+    // however you can still create arrays and dictionaries with similar syntax
+var collections5 = Dictionary<String, Int>()
+var collections6 = Array<Int>()
+
+// Enumerations - also called 'enums' method to define groups of related values in an easy to use way
+let enum1 = "Yes"
+let enum2 = "Afirmative"
+let enum3 = "Yep"
+enum enumval {
+    case yes
+    case no
+}
+let enum4 = enumval.yes
+let enum5 = enumval.no
+
+// Enum associated values - additional information can be attached to values stored in enums
+enum enumass {
+    case person(name: String)
+    case age(num: Int)
+    case occupation(work: String)
+}
+let person = enumass.age(num: 24)
+
+// Enum raw values - assign values to enums so they have meaning; allows for dynamic creation
+    // Swift automatically assigns values starting from 0
+enum enumraw: Int {
+    case first
+    case second
+    case third
+    case fourth
+}
+var third = enumraw (rawValue: 2)
+    // assign a single value to a case and Swift will generate the rest
+enum enumraw2: Int {
+    case first = 1
+    case second
+    case third
+    case fourth
+}
+
+// Summary
+/*      1. Arrays, sets, tuples, and dictionaries let you store a group of items under a single value. They each do this in different ways, so which you use depends          on the behavior you want.
+        2. Arrays store items in the order you add them, and you access them using numerical positions.
+        3. Sets store items without any order, so you can’t access them using numerical positions.
+        4. Tuples are fixed in size, and you can attach names to each of their items. You can read items using numerical positions or using your names.
+        5. Dictionaries store items according to a key, and you can read items using those keys.
+        6. Enums are a way of grouping related values so you can use them without spelling mistakes.
+        7. You can attach raw values to enums so they can be created from integers or strings, or you can add associated values to store additional information about each case. */
+
+
+                            // ---------- DAY 3: Opperators and Conditions----------
+// Arithmetic Operators - (+ - * / %)
+var score1 = 30
+var score2 = 5
+var total = score1 + score2
+var difference = score1 - score2
+var product = score1 * score2
+var divided = score1 / score2
+var remainder = score2 % score1
+var result = 2 + 2 + 1.0
+
+// Operator Overloading - what an operator does depends on the values you use with it
+var meaningofLife = 42
+var doublemeaning = meaningofLife * 2
+var hello = "Hello, "
+var helloworld = hello + "World!"
+    // + can be used to join arrays
+var scores1 = [80, 75, 75]
+var scores2 = [85, 70, 70]
+var combscore = scores1 + scores2
+    // Note: cannot mix types in Swift
+
+// Compound Assignment Operators - a shorthand way of working on previous operators
+var score3 = 90
+score3 += 5
+var quote = "Do not go gentle "
+quote += "into that good night."
+    // note, constants cannot be modified
+
+// Comparison Operators - compare values
+var score4 = 10
+var score5 = 7
+score4 == score5 // is the same as
+score4 != score5 // is not the same as
+score4 < score5 // is less than
+score4 >= score5 // is equal to or greater than
+"Kayla" <= "Garvin" // compares the number of letters
+// if someBoolean == true, can be written as if someBoolean
+
+// Conditions - 'if' statement is true, run the following
+let card1 = 10
+let card2 = 11
+if card1 + card2 == 21 {
+    print("Blackjack!")
+}
+    //
+if card1 + card2 < 21 {
+    print("Draw?")
+}   else {
+    if card1 + card2 > 21 {
+        print("too bad!")
+    } else {
+        print("Blackjack!")
+    }
+}
+
+// Combining Conditions - && and, || or
+let age1 = 12
+let age2 = 21
+if age1 > 18 && age2 > 18 {
+    print("Both are over 18")
+}
+    //
+if age1 > 18 || age2 > 18 {
+    print("At least one is over 18")
+}
+
+// the Ternary Operator - works with 3 values at once, if first is true it returns the second value, if false then the third
+
+let card3 = 11
+let card4 = 10
+print(card3 == card4 ?
+    "Cards are the same" : "Cards are different")
+    // can be writen using regular condition:
+if card3 == card4 {
+    print("Cards are the same")
+} else {
+    print("Cards are different")
+}
+
+// Switch Statements - requires condition being written once, then list all possible outcomes
+let weather = "sunny"
+switch weather {
+case "rain":
+    print("Bring an umbrella")
+case "snow":
+    print("Wrap up warm")
+case "sunny":
+    print("Wear sunscreen")
+default:
+    print("Enjoy your day!")
+}
+    // use fallthrough if you want code execution to run beyond the inside of a case
+switch weather {
+case "rain":
+    print("Bring an umbrella")
+case "snow":
+    print("Wrap up warm")
+case "sunny":
+    print("Wear sunscreen")
+    fallthrough
+default:
+    print("Enjoy your day!")
+}
+
+// Range Operators - allows to specify a set range, ..< excludes final value while ... includes final value
+let score6 = 85
+switch score6 {
+case 0..<50:
+    print("I feel your pain")
+case 50..<85:
+    print("You did good")
+default:
+    print("You did great!")
+}
+
+// Summary
+/* 1. Swift has operators for doing arithmetic and for comparison; they mostly work like you already know.
+   2. There are compound variants of arithmetic operators that modify their variables in place: +=, -=, and so on.
+   3. You can use if, else, and else if to run code based on the result of a condition.
+   4. Swift has a ternary operator that combines a check with true and false code blocks. Although you might see it in other code, I wouldn’t recommend using it yourself.
+   5. If you have multiple conditions using the same value, it’s often clearer to use switch instead.
+   6. You can make ranges using ..< and ... depending on whether the last number should be excluded or included. */
