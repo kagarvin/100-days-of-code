@@ -153,6 +153,7 @@ enum enumraw2: Int {
 
 
                             // ---------- DAY 3: Opperators and Conditions----------
+
 // Arithmetic Operators - (+ - * / %)
 var score1 = 30
 var score2 = 5
@@ -275,3 +276,50 @@ default:
    4. Swift has a ternary operator that combines a check with true and false code blocks. Although you might see it in other code, I wouldn’t recommend using it yourself.
    5. If you have multiple conditions using the same value, it’s often clearer to use switch instead.
    6. You can make ranges using ..< and ... depending on whether the last number should be excluded or included. */
+
+
+                            // ---------- DAY 4: Looping ----------
+
+// For Loops - continues looping as long as list contains something
+let count = 1...10
+for number in count {
+    print("Number is \(number)")
+}
+    //
+let albums = ["Americana", "Conspiracy of One", "Splinter", "Rise and Fall, Rage and Grace", "Days Go By"]
+for album in albums {
+    print("\(album) is by The Offspring")
+}
+    // if you don't use constant provided by for loop, use _
+print("Players gonna ")
+for _ in 1...5 {
+    print("play")
+}
+
+// While Loops - continues looping as long as condition is true
+var number = 1
+while number <= 10 {
+    print(number)
+    number += 1
+}
+print("Ready or not, here I come!")
+
+// Repeat Loops - a while loop but the check condition comes at the end and will always run at least once
+var number2 = 1
+repeat {
+    print(number2)
+    number2 += 1
+} while number2 <= 10
+print("Ready or not, here I come!")
+    // will never run
+/*
+while false {
+    print("This is false")
+}
+*/
+    // this will run once
+repeat {
+    print("This is false")
+} while false
+
+// Exiting Loops
